@@ -4,7 +4,7 @@
 
 - Make Oracle instance
 
-##Scrips for Oracle start/stop 
+## Scrips for Oracle start/stop 
 
 - Start Oracle
 
