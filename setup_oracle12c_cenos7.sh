@@ -127,7 +127,7 @@ export ORAENV_ASK=YES
 dbstart \$ORACLE_HOME
 EOF
 ##Stop Oracle
-cat > /home/oracle/scripts/stop_all.sh <<EOF
+cat > $ORACLE_DIR/scripts/stop_all.sh <<EOF
 #!/bin/bash
 . /home/oracle/scripts/setEnv.sh
 export ORAENV_ASK=NO
@@ -136,8 +136,8 @@ export ORAENV_ASK=YES
 dbshut \$ORACLE_HOME
 EOF
 
-chown -R oracle.oinstall /home/oracle/scripts
-chmod u+x /home/oracle/scripts/*.sh
+chown -R oracle.oinstall $ORACLE_DIR/scripts
+chmod u+x $ORACLE_DIR/scripts/*.sh
 
 #Prepare ORACLE database software for installation
 mv ${SOURCEPATH}/${ORACLE_FILE} $ORACLE_DIR
