@@ -114,30 +114,30 @@ export LD_LIBRARY_PATH=\$ORACLE_HOME/lib:/lib:/usr/lib
 export CLASSPATH=\$ORACLE_HOME/jlib:\$ORACLE_HOME/rdbms/jlib
 EOF
 
-echo ". /home/oracle/scripts/setEnv.sh" >> ${ORACLE_DIR}/.bash_profile
+echo ". ${ORACLE_DIR}/scripts/setEnv.sh" >> ${ORACLE_DIR}/.bash_profile
 
 #Scrips for Oracle start/stop
 ##Start Oracle
 cat > $ORACLE_DIR/scripts/start_all.sh <<EOF
 #!/bin/bash
-. /home/oracle/scripts/setEnv.sh
+. ${ORACLE_DIR}/scripts/setEnv.sh
 export ORAENV_ASK=NO
 . oraenv
 export ORAENV_ASK=YES
 dbstart \$ORACLE_HOME
 EOF
 ##Stop Oracle
-cat > $ORACLE_DIR/scripts/stop_all.sh <<EOF
+cat > ${ORACLE_DIR}/scripts/stop_all.sh <<EOF
 #!/bin/bash
-. /home/oracle/scripts/setEnv.sh
+. ${ORACLE_DIR}/scripts/setEnv.sh
 export ORAENV_ASK=NO
 . oraenv
 export ORAENV_ASK=YES
 dbshut \$ORACLE_HOME
 EOF
 
-chown -R oracle.oinstall $ORACLE_DIR/scripts
-chmod u+x $ORACLE_DIR/scripts/*.sh
+chown -R oracle.oinstall ${ORACLE_DIR}/scripts
+chmod u+x ${ORACLE_DIR}/scripts/*.sh
 
 #Prepare ORACLE database software for installation
 mv ${SOURCEPATH}/${ORACLE_FILE} $ORACLE_DIR
