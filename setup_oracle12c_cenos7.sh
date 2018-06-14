@@ -16,7 +16,7 @@ SOURCEPATH=/home/setup
 ORACLE_FILE=linuxx64_12201_database.zip
 ORACLE_DIR=/home/oracle
 ORACLE_PASSWORD=Oracle12c
-IPADDRESS=192.168.10.118
+IPADDRESS=192.168.1.118
 
 #Check user account to run script
 if [[ $UID -ne 0 ]]; then
@@ -188,21 +188,21 @@ echo "---------------------------------------------------"
 echo "Configure LISTENER with standard settings"
 cat >${ORACLE_DIR}/database/netca.rsp<<EOF
 [GENERAL]
-RESPONSEFILE_VERSION=\"12.2\"
-CREATE_TYPE=\"CUSTOM\"
+RESPONSEFILE_VERSION="12.2"
+CREATE_TYPE="CUSTOM"
 SHOW_GUI=false
 [oracle.net.ca]
-INSTALLED_COMPONENTS={\"server\",\"net8\",\"javavm\"}
-INSTALL_TYPE=\"\"typical\"\"
+INSTALLED_COMPONENTS={"server","net8","javavm"}
+INSTALL_TYPE=""typical""
 LISTENER_NUMBER=1
-LISTENER_NAMES={\"LISTENER\"}
-LISTENER_PROTOCOLS={\"TCP;1521\"}
-LISTENER_START=\"\"LISTENER\"\"
-NAMING_METHODS={\"TNSNAMES\",\"ONAMES\",\"HOSTNAME\"}
+LISTENER_NAMES={"LISTENER"}
+LISTENER_PROTOCOLS={"TCP;1521"}
+LISTENER_START=""LISTENER""
+NAMING_METHODS={"TNSNAMES","ONAMES","HOSTNAME"}
 NSN_NUMBER=1
-NSN_NAMES={\"EXTPROC_CONNECTION_DATA\"}
-NSN_SERVICE={\"PLSExtProc\"}
-NSN_PROTOCOLS={\"TCP;HOSTNAME;1521\"}
+NSN_NAMES={"EXTPROC_CONNECTION_DATA"}
+NSN_SERVICE={"PLSExtProc"}
+NSN_PROTOCOLS={"TCP;HOSTNAME;1521"}
 EOF
 su oracle -c "${ORACLE_HOME}/bin/netca -silent -responseFile ${ORACLE_DIR}/database/netca.rsp"
 su oracle -c "${ORACLE_HOME}/bin/lsnrctl start"
@@ -224,7 +224,7 @@ sleep 3
 #Make response file for dbca;
 cd ${ORACLE_DIR}/database
 cat >dbca.rsp <<EOF
-gdbName=$ORACLE_SID.${DOMAIN}
+gdbName=$ORACLE_SID
 sid=$ORACLE_SID
 createAsContainerDatabase=true
 numberOfPDBs=1
