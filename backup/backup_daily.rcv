@@ -1,0 +1,7 @@
+run{
+  show all;
+      delete noprompt backup completed before 'sysdate-6';
+      backup incremental level 1 cumulative database tag='icumulative';
+      delete noprompt archivelog all completed before 'sysdate-6';
+}
+
