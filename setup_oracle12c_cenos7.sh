@@ -56,7 +56,7 @@ groupadd -g 54330 racdba
 
 #Create oracle user
 echo "Creating Oracle user"
-useradd -u 54321 -g oinstall -G dba,oper,backupdba,dgdba,kmdba,racdba oracle
+useradd -u 54321 -g oinstall -G dba,oper,backupdba,dgdba,kmdba,racdba,oinstall oracle
 
 echo "kernel parameters for 12gR2 installation"
 cat >/etc/sysctl.conf <<EOF
@@ -140,7 +140,7 @@ chown -R oracle.oinstall ${ORACLE_DIR}/scripts
 chmod u+x ${ORACLE_DIR}/scripts/*.sh
 
 #Prepare ORACLE database software for installation
-mv ${SOURCEPATH}/${ORACLE_FILE} $ORACLE_DIR
+cp ${SOURCEPATH}/${ORACLE_FILE} $ORACLE_DIR
 cd ${ORACLE_DIR}
 unzip ${ORACLE_FILE}
 chown -R oracle:oinstall ${ORACLE_DIR}/database
