@@ -2,16 +2,18 @@
 
 # Table of contens
 
-- [1. Các thuật toán cân bằng tải](#algorithm)
-  - [1.1 Roundrobin](#roundrobin)
-  - [1.2 leastconn](#leastconn)
-- [2. Sticky session](#sticky_session)
-  - [2.1 Session cookie được thiết lập bởi HAProxy](#insert_cookie)
-  - [2.2 Sử dụng session cookie của ứng dụng](#prefix_cookie)
+- [I. Managing Database](#managing-database)
+  - [1. Add/Modify/Drop](#alter)
+  - [2. Show information](#show-information)
+- [II. Managing user](#managing-user)
+  - [1. Creating common user](#common-user)
+  - [2. Creating local user](#local-user)
+  - [3. Setup Users permissions, roles](#user-permission)
+- [III. Connect to database](#connect-database)
 
-# I. Managing Database
+# <a name="managing-database">I. Managing Database</a>
 
-## 1. Add/Modify/Drop
+## <a name="alter">1. Add/Modify/Drop</a>
 
 - Create tablespace with the first datafile
 
@@ -251,7 +253,7 @@ NEIF
 
 `select file_name,blocks,tablespace_name from dba_data_files where tablespace='MYTABLES';`
 
-# II. Managing User
+# <a name="managing-user">II. Managing User</a>
 
 Reference: [https://docs.oracle.com/database/121/SQLRF/statements_8003.htm#SQLRF01503](https://docs.oracle.com/database/121/SQLRF/statements_8003.htm#SQLRF01503)
 
@@ -266,7 +268,7 @@ We should not create any objects in Common User account as it will cause problem
 
 - Local User:- A local user is created in a PDB database and can connect and has privileges in that PDB only.
 
-## Creating a common user account.
+## <a name="common-user">1. Creating a common user account</a>
 
 ```
 SQL> create user c##admin identified by adminpwd container=all;
@@ -294,7 +296,7 @@ Connected.
 SQL> 
 ```
 
-## Creating a Local User
+## <a name="local-user">2. Creating a Local User</a>
 
 ```
 SQL> alter session set container=porcl;
@@ -302,7 +304,7 @@ SQL> create user dungnv identified by Passw0rd quota 50M on users;
 SQL> grant connect,resource to dungnv;
 ```
 
-## Setup Users permissions, roles
+## <a name="user-permission">3. Setup Users permissions, roles</a>
 
 - show all users;
 
@@ -341,7 +343,7 @@ sqll>alter user dungnv quota unlimited on mytables;
 
 `sql>alter user dungnv identified by Oracle12c`
 
-# III. Connect to database
+# <a name="connect-database">III. Connect to database</a>
 
 ## Connect through EZConnect
 
