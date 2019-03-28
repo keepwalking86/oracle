@@ -1,4 +1,4 @@
-# Install & Backup Oracle database 12c on CentOS7
+# Setup & Backup Oracle Database 12c on CentOS7
 
 - Setup Oracle database
 
@@ -6,19 +6,16 @@
 
 - Scripts for Backup Oracle DB
 
-## Requirements
+## Setup Oracle Database 12C
 
-- Download Oracle Database software (linuxx64_12201_database.zip)
+- Step1: [Download Oracle Database software (linuxx64_12201_database.zip)](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html)
 
-- Copy linuxx64_12201_database.zip to server
+- Step2: Copy linuxx64_12201_database.zip to $SOURCEPATH(/home/setup) on server
 
-## Scrips for Oracle start/stop 
+- Step3: Run script [setup oracle 12c on centos 7](https://raw.githubusercontent.com/keepwalking86/oracle12c/master/setup_oracle12c_cenos7.sh)
 
-- Start Oracle
+## Managing Oracle Database 12C
 
-`/home/oracle/scripts/start_all.sh`
+- [Oracle Database Administration (basic)](docs/manage-oracle-database-by-command-line.md)
 
-- Stop Oracle
-
-`/home/oracle/scripts/stop_all.sh`
-
+- [Moving/clone Oracle database to new server using RMAN](docs/moving-oracle-database-to-new-server-using-RMAN.md)
