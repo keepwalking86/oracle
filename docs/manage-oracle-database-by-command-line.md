@@ -47,7 +47,7 @@ sql>alter database orcl datafile '/u01/app/oracle/oradata/orcl/mytables01.dbf' r
 
 **option2**: extend tablespace by adding a new datafile
 
-`sql>alter tablespace add datafile '/u01/app/oracle/oradata/orcl/mytables03.dbf' size 100m;`
+`sql>alter tablespace mytables add datafile '/u01/app/oracle/oradata/orcl/mytables03.dbf' size 100m;`
 
 **option3**: autoextend datafile
 
@@ -251,7 +251,7 @@ NEIF
 
 - Show datafiles on a tablespace
 
-`select file_name,blocks,tablespace_name from dba_data_files where tablespace='MYTABLES';`
+`select file_name,blocks,tablespace_name from dba_data_files where tablespace_name='MYTABLES';`
 
 # <a name="managing-user">II. Managing User</a>
 
