@@ -14,7 +14,16 @@
 
 - Step3: [Run script setup oracle 12c on centos 7](https://raw.githubusercontent.com/keepwalking86/oracle12c/master/setup_oracle12c_cenos7.sh)
 
-## Managing Oracle Database 12C
+## Setup Oracle Database 19C
+
+- Step1: [Download Oracle Database software (LINUX.X64_193000_db_home.zip)](https://download.oracle.com/otn/linux/oracle19c/190000/LINUX.X64_193000_db_home.zip)
+
+- Step2: Copy LINUX.X64_193000_db_home.zip to $SOURCEPATH(/home/setup) on server
+
+- Step3: [Run script setup oracle 19c_on_Oracle_Linux_8](https://raw.githubusercontent.com/keepwalking86/oracle/master/oracle19c/setup_oracle19c_OL8.sh)
+
+
+## Managing Oracle Database
 
 - [Oracle Database Administration (basic)](docs/manage-oracle-database-by-command-line.md)
 
