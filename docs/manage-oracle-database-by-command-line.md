@@ -8,7 +8,8 @@
 - [II. Managing user](#managing-user)
   - [1. Creating common user](#common-user)
   - [2. Creating local user](#local-user)
-  - [3. Setup Users permissions, roles](#user-permission)
+  - [3. Creating Users on a pluggable](#pdb-user)
+  - [4. Setup Users permissions, roles](#user-permission)
 - [III. Connect to database](#connect-database)
 
 # <a name="managing-database">I. Managing Database</a>
@@ -82,7 +83,7 @@ Rename mytable to yourtable
 
 ## 2. Show information
 
-$sqlplus /as sysdba
+`sqlplus /as sysdba`
 
 - show database
 
@@ -93,6 +94,7 @@ NAME
 ---------
 ORCL
 ```
+
 - show tablespace
 
 ```
@@ -233,6 +235,10 @@ NEIF
 
 `sql>select tablespace_name, table_name from all_tables;`
 
+- list all tables in a schema (user)
+
+`sql>select table_name  from all_tables where owner = 'KEEPWALKING';`
+
 - show properties dba_tablespaces
 
 `sql>desc dba_tablespaces;`
@@ -303,8 +309,40 @@ SQL> alter session set container=porcl;
 SQL> create user dungnv identified by Passw0rd quota 50M on users;
 SQL> grant connect,resource to dungnv;
 ```
+## <a name="pdb-user">3. Creating Users on a pluggable</a>
 
-## <a name="user-permission">3. Setup Users permissions, roles</a>
+- Create on a pluggable
+
+```
+SQL> conn / as sysdba
+Connected.
+SQL> alter session set container=ODS;
+SQL> create user keepwalking identified by passwd quota 50M on users;
+SQL> grant connect,resource to keepwalking
+```
+
+- Login
+
+`SQL> conn keepwalking/educa2022`
+
+- Login with tnsname
+
+```
+vi oracle/instantclient_19_8/network/admin/tnsnames.ora
+ODS01 =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = 172.16.0.10)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = ODS)
+    )
+  )
+```
+
+`sqlplus keepwalking@172.16.0.10/ODS`
+
+
+## <a name="user-permission">4. Setup Users permissions, roles</a>
 
 - show all users;
 
@@ -325,7 +363,7 @@ SQL> grant connect,resource to dungnv;
 - set quota to user
 
 ```
-$sqlplus / as sysdba
+sqlplus / as sysdba
 sql>select name from v$tablespace;
 sql>alter user dungnv quota 10m on mytables;
 sqll>alter user dungnv quota unlimited on mytables;

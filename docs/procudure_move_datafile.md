@@ -14,7 +14,7 @@ NAME
 /u01/app/oracle/oradata/sorcl/sorcl/users01.dbf
 /u02/oradata/smsgw01.dbf
 
-SQL> alter databse recover managed standby database cancel;
+SQL> alter database recover managed standby database cancel;
 SQL> alter system set standby_file_management=manual;
 SQL> !mv /u02/oradata/smsgw01.dbf /u01/app/oracle/oradata/sorcl/sorcl/
 SQL> alter database rename file '/u02/oradata/smsgw01.dbf' to '/u01/app/oracle/oradata/sorcl/sorcl/smsgw01.dbf';

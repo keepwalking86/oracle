@@ -201,10 +201,10 @@ sleep 5
 su oracle -c "export CV_ASSUME_DISTID=OEL8.6;$ORACLE_HOME/runInstaller -silent -debug -waitForCompletion -responseFile $ORACLE_HOME/db_install.rsp"
 
 #Setup and configure DB software
-${ORACLE_INVENTORY_LOCATION}/orainstRoot.sh
-${ORACLE_HOME}/root.sh
-# /u01/app/oraInventory/orainstRoot.sh
-# /u01/app/oracle/product/19.3.0/db_1/root.sh
+#${ORACLE_INVENTORY_LOCATION}/orainstRoot.sh
+#${ORACLE_HOME}/root.sh
+/u01/app/oraInventory/orainstRoot.sh
+/u01/app/oracle/product/19.3.0/db_1/root.sh
 
 ###Config Oracle net
 echo "---------------------------------------------------"
